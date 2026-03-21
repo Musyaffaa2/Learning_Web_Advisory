@@ -2,17 +2,15 @@ import { useState } from "react";
 import GlobalStyles from "./styles/GlobalStyles";
 import Navbar from "./components/layout/Navbar";
 import PageHome from "./pages/PageHome";
-import PageDashboard from "./pages/PageDashboard";
-import PageAnalysis from "./pages/PageAnalysis";
-import PageRekomendasi from "./pages/PageRekomendasi";
+import PageInformasi from "./pages/PageInformasi";
+import PageVisualisasi from "./pages/PageVisualisasi";
 import PageKuesioner from "./pages/PageKuesioner";
 
 const PAGES = {
-  home:        PageHome,
-  dashboard:   PageDashboard,
-  analysis:    PageAnalysis,
-  rekomendasi: PageRekomendasi,
-  kuesioner:   PageKuesioner,
+  home:         PageHome,
+  informasi:    PageInformasi,
+  visualisasi:  PageVisualisasi,
+  kuesioner:    PageKuesioner,
 };
 
 export default function App() {

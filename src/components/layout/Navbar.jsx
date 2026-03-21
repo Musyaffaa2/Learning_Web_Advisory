@@ -3,9 +3,8 @@ import { T } from "../../styles/tokens";
 
 const NAV_LINKS = [
   { id: "home",        label: "Beranda" },
-  { id: "dashboard",   label: "Dashboard" },
-  { id: "analysis",    label: "Analisis" },
-  { id: "rekomendasi", label: "Rekomendasi" },
+  { id: "informasi",   label: "Informasi" },
+  { id: "visualisasi", label: "Visualisasi" },
   { id: "kuesioner",   label: "Kuesioner" },
 ];
 
@@ -91,7 +90,7 @@ export default function Navbar({ page, setPage }) {
         </button>
       </nav>
 
-      {/* Mobile dropdown menu */}
+      {/* Mobile dropdown */}
       {menuOpen && (
         <div style={{
           position: "fixed", top: 64, left: 0, right: 0, zIndex: 99,
