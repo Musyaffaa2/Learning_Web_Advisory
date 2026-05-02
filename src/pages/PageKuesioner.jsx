@@ -8,7 +8,7 @@ const GOOGLE_FORM_URL = "https://forms.gle/GANTI_DENGAN_LINK_FORM_KAMU";
 const STEPS = [
   { num: "1", icon: "👁️", title: "Pelajari Sistem",    desc: "Baca penjelasan metode dan lihat visualisasi hasil klasterisasi di halaman sebelumnya." },
   { num: "2", icon: "▶️", title: "Tonton Video",        desc: "Tonton video penjelasan singkat tentang cara kerja Learning Advisory System." },
-  { num: "3", icon: "📝", title: "Isi Kuesioner",       desc: "Klik tombol di bawah untuk membuka Google Form dan isi kuesioner TAM2 dengan jujur." },
+  { num: "3", icon: "📝", title: "Isi Kuesioner",       desc: "Klik tombol di bawah untuk membuka Google Form dan isi kuesioner TAM2 ." },
 ];
 
 // Variabel Independen
