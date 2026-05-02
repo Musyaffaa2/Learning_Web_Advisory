@@ -1,199 +1,178 @@
-import { useState } from "react";
 import { T } from "../styles/tokens";
-import Card from "../components/ui/Card";
 import SectionLabel from "../components/ui/SectionLabel";
-import { konstruk } from "../data/kuesioner";
+import Card from "../components/ui/Card";
 
-const ALL_ITEMS = konstruk.flatMap((k) => k.items.map((_, i) => ({ key: `${k.id}_${i}` })));
-const SCALE_LABELS = ["Sangat Tidak Setuju", "Tidak Setuju", "Netral", "Setuju", "Sangat Setuju"];
+// ✏️ Ganti URL ini dengan link Google Form kamu
+const GOOGLE_FORM_URL = "https://forms.gle/GANTI_DENGAN_LINK_FORM_KAMU";
 
-function KuesionerSuccess({ name, school, scores, onReset }) {
+const STEPS = [
+  { num: "1", icon: "👁️", title: "Pelajari Sistem",    desc: "Baca penjelasan metode dan lihat visualisasi hasil klasterisasi di halaman sebelumnya." },
+  { num: "2", icon: "▶️", title: "Tonton Video",        desc: "Tonton video penjelasan singkat tentang cara kerja Learning Advisory System." },
+  { num: "3", icon: "📝", title: "Isi Kuesioner",       desc: "Klik tombol di bawah untuk membuka Google Form dan isi kuesioner TAM2 dengan jujur." },
+];
+
+// Variabel Independen
+const KONSTRUK_INDEPENDEN = [
+  { id: "PU",   label: "Perceived Usefulness",   color: T.blue,    n: 5 },
+  { id: "PEOU", label: "Perceived Ease of Use",  color: T.green,   n: 5 },
+  { id: "SN",   label: "Subjective Norm",        color: T.amber,   n: 3 },
+  { id: "IMG",  label: "Image",                  color: "#7c3aed", n: 4 },
+  { id: "JR",   label: "Job Relevance",          color: "#0891b2", n: 4 },
+  { id: "OQ",   label: "Output Quality",         color: "#059669", n: 3 },
+];
+
+// Variabel Dependen
+const KONSTRUK_DEPENDEN = [
+  { id: "BI",   label: "Behavioral Intention to Use", color: "#db2777", n: 5 },
+];
+
+const TOTAL_ITEM = [...KONSTRUK_INDEPENDEN, ...KONSTRUK_DEPENDEN].reduce((a, k) => a + k.n, 0);
+
+function KonstrukRow({ k }) {
   return (
-    <div style={{ padding: "60px 48px", maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
-      <div style={{
-        width: 72, height: 72, borderRadius: 99, background: "#f0fdf4",
-        margin: "0 auto 20px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 36,
-      }}>✅</div>
-      <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 32, color: T.text, marginBottom: 8 }}>
-        Terima Kasih!
-      </h2>
-      <p style={{ color: T.sub, marginBottom: 32 }}>
-        Respons {name || "Anda"} dari {school || "sekolah Anda"} telah berhasil dicatat.
-      </p>
-
-      <Card style={{ textAlign: "left", marginBottom: 24 }}>
-        <div style={{ fontWeight: 700, color: T.text, marginBottom: 16 }}>Ringkasan Skor</div>
-        {konstruk.map((k) => (
-          <div key={k.id} style={{
-            display: "flex", justifyContent: "space-between", alignItems: "center",
-            padding: "10px 0", borderBottom: `1px solid ${T.border}`,
-          }}>
-            <span style={{ color: T.sub, fontSize: 14 }}>{k.label}</span>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <div style={{ width: 60, height: 6, borderRadius: 99, background: T.border, overflow: "hidden" }}>
-                <div style={{ width: `${(scores[k.id] / 5) * 100}%`, height: "100%", background: k.color, borderRadius: 99 }} />
-              </div>
-              <span style={{ fontSize: 16, fontWeight: 800, color: k.color }}>{scores[k.id]}</span>
-            </div>
-          </div>
-        ))}
-      </Card>
-
-      <button className="btn-primary" onClick={onReset} style={{
-        background: T.blue, color: "#fff", border: "none", borderRadius: 10,
-        padding: "12px 28px", fontWeight: 600, cursor: "pointer", fontFamily: "'DM Sans', sans-serif",
-      }}>
-        Isi Ulang Kuesioner
-      </button>
+    <div style={{ display: "flex", justifyContent: "space-between",
+                  alignItems: "center", padding: "9px 0",
+                  borderBottom: `1px solid ${T.border}` }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <div style={{ width: 8, height: 8, borderRadius: 99, background: k.color, flexShrink: 0 }} />
+        <div>
+          <span style={{ fontSize: 12, fontWeight: 700, color: k.color }}>{k.id} </span>
+          <span style={{ fontSize: 13, color: T.sub }}>{k.label}</span>
+        </div>
+      </div>
+      <span style={{ fontSize: 12, color: T.muted, fontWeight: 600 }}>{k.n} item</span>
     </div>
   );
 }
 
 export default function PageKuesioner() {
-  const [answers, setAnswers] = useState({});
-  const [name, setName]       = useState("");
-  const [school, setSchool]   = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const total  = ALL_ITEMS.length;
-  const filled = Object.keys(answers).length;
-  const pct    = Math.round((filled / total) * 100);
-
-  const handleSubmit = () => {
-    if (filled < total) {
-      alert(`Masih ada ${total - filled} pertanyaan yang belum diisi.`);
-      return;
-    }
-    setSubmitted(true);
-  };
-
-  const handleReset = () => {
-    setSubmitted(false);
-    setAnswers({});
-    setName("");
-    setSchool("");
-  };
-
-  const scores = Object.fromEntries(
-    konstruk.map((k) => {
-      const vals = k.items.map((_, i) => answers[`${k.id}_${i}`] || 0);
-      return [k.id, (vals.reduce((a, b) => a + b, 0) / vals.length).toFixed(2)];
-    })
-  );
-
-  if (submitted) {
-    return <KuesionerSuccess name={name} school={school} scores={scores} onReset={handleReset} />;
-  }
-
   return (
-    <div className="page-content" style={{ padding: "40px 48px", maxWidth: 700 }}>
+    <div className="page-content" style={{ padding: "40px 48px" }}>
       <SectionLabel>EVALUASI SISTEM</SectionLabel>
       <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 34, color: T.text, margin: "8px 0 6px" }}>
         Kuesioner TAM2
       </h2>
-      <p style={{ color: T.sub, fontSize: 14, marginBottom: 28, lineHeight: 1.6 }}>
-        Setelah melihat demonstrasi sistem, mohon isi kuesioner berikut dengan jujur.<br />
-        <strong>Skala:</strong> 1 = Sangat Tidak Setuju &nbsp;·&nbsp; 5 = Sangat Setuju
+      <p style={{ color: T.sub, fontSize: 15, marginBottom: 40, maxWidth: 560 }}>
+        Bantu penelitian ini dengan mengisi kuesioner penerimaan teknologi. Sebelum mengisi,
+        pastikan kamu sudah mempelajari sistem dan menonton video penjelasan terlebih dahulu.
       </p>
 
-      {/* Progress */}
-      <Card style={{ marginBottom: 24 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-          <span style={{ fontSize: 13, color: T.sub }}>Progress Pengisian</span>
-          <span style={{ fontSize: 13, fontWeight: 700, color: T.blue }}>{filled}/{total} ({pct}%)</span>
-        </div>
-        <div style={{ background: T.border, borderRadius: 99, height: 8, overflow: "hidden" }}>
-          <div style={{
-            width: `${pct}%`, height: "100%",
-            background: `linear-gradient(90deg, ${T.blue}, #60a5fa)`,
-            borderRadius: 99, transition: "width .35s",
-          }} />
+      {/* ── Langkah-langkah ── */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20, marginBottom: 40 }}
+           className="how-it-works-grid">
+        {STEPS.map((s, i, a) => (
+          <div key={s.num} style={{ position: "relative" }}>
+            {i < a.length - 1 && (
+              <div style={{ position: "absolute", top: 24, left: "calc(100% - 10px)", width: 20, height: 2, background: `${T.blue}30`, zIndex: 1 }} />
+            )}
+            <Card>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+                <div style={{ width: 40, height: 40, borderRadius: 99, background: T.lblue,
+                              color: T.blue, fontWeight: 800, fontSize: 18,
+                              display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  {s.icon}
+                </div>
+                <div style={{ fontSize: 28, fontWeight: 800, color: `${T.blue}25`,
+                              fontFamily: "'DM Serif Display', serif" }}>{s.num}</div>
+              </div>
+              <div style={{ fontWeight: 700, color: T.text, marginBottom: 6 }}>{s.title}</div>
+              <div style={{ fontSize: 13, color: T.sub, lineHeight: 1.65 }}>{s.desc}</div>
+            </Card>
+          </div>
+        ))}
+      </div>
+
+      {/* ── Main CTA card ── */}
+      <Card style={{ marginBottom: 32, background: `linear-gradient(135deg, ${T.blue}08, ${T.blue}04)`,
+                     borderColor: `${T.blue}30`, textAlign: "center", padding: "48px 40px" }}>
+        <div style={{ fontSize: 48, marginBottom: 16 }}>📋</div>
+        <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 26, color: T.text, marginBottom: 10 }}>
+          Siap Mengisi Kuesioner?
+        </h3>
+        <p style={{ color: T.sub, fontSize: 15, lineHeight: 1.7, maxWidth: 440, margin: "0 auto 28px" }}>
+          Kuesioner terdiri dari <strong>{TOTAL_ITEM} pernyataan</strong> dengan skala Likert 1–5.
+          Pengisian membutuhkan waktu sekitar <strong>5–10 menit</strong>.
+        </p>
+        <a
+          href={GOOGLE_FORM_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary"
+          style={{
+            display: "inline-flex", alignItems: "center", gap: 10,
+            background: T.blue, color: "#fff", borderRadius: 12,
+            padding: "14px 36px", fontWeight: 700, fontSize: 16,
+            textDecoration: "none", boxShadow: `0 8px 24px ${T.blue}44`,
+          }}
+        >
+          <span style={{ fontSize: 20 }}>📝</span>
+          Buka Google Form
+          <span style={{ fontSize: 14 }}>↗</span>
+        </a>
+        <div style={{ marginTop: 14, fontSize: 12, color: T.muted }}>
+          Akan membuka tab baru · Google Form
         </div>
       </Card>
 
-      {/* Identity */}
-      <Card style={{ marginBottom: 24 }}>
-        <div style={{ fontWeight: 700, color: T.text, marginBottom: 14 }}>Identitas Responden</div>
-        <div className="identity-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+      {/* ── Info konstruk + petunjuk ── */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}
+           className="identity-grid">
+
+        {/* Konstruk TAM2 */}
+        <Card>
+          <div style={{ fontWeight: 700, color: T.text, marginBottom: 16 }}>📊 Konstruk Kuesioner (TAM2)</div>
+
+          {/* Independen */}
+          <div style={{ fontSize: 11, color: T.muted, fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>
+            VARIABEL INDEPENDEN
+          </div>
+          {KONSTRUK_INDEPENDEN.map(k => <KonstrukRow key={k.id} k={k} />)}
+
+          {/* Dependen */}
+          <div style={{ fontSize: 11, color: T.muted, fontWeight: 700, letterSpacing: 1,
+                        marginTop: 14, marginBottom: 6 }}>
+            VARIABEL DEPENDEN
+          </div>
+          {KONSTRUK_DEPENDEN.map(k => <KonstrukRow key={k.id} k={k} />)}
+
+          {/* Total */}
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "10px 0",
+                        marginTop: 4, borderTop: `2px solid ${T.border}` }}>
+            <span style={{ fontSize: 13, fontWeight: 700, color: T.text }}>Total Item</span>
+            <span style={{ fontSize: 13, fontWeight: 800, color: T.blue }}>{TOTAL_ITEM} item</span>
+          </div>
+        </Card>
+
+        {/* Petunjuk */}
+        <Card>
+          <div style={{ fontWeight: 700, color: T.text, marginBottom: 16 }}>📌 Petunjuk Pengisian</div>
           {[
-            { label: "Nama Guru (Opsional)",    val: name,   set: setName,   ph: "Masukkan nama..." },
-            { label: "Asal Sekolah (Opsional)", val: school, set: setSchool, ph: "Nama sekolah..."  },
-          ].map((f) => (
-            <div key={f.label}>
-              <div style={{ fontSize: 12, color: T.muted, fontWeight: 600, marginBottom: 6 }}>
-                {f.label.toUpperCase()}
+            "Baca setiap pernyataan dengan saksama sebelum menjawab.",
+            "Pilih angka 1–5 yang paling sesuai dengan pendapat Anda.",
+            "Tidak ada jawaban benar atau salah — jawab sejujurnya.",
+            "Pastikan semua pernyataan telah diisi sebelum mengirim form.",
+            "Jawaban Anda hanya digunakan untuk keperluan penelitian.",
+          ].map((p, i) => (
+            <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 10 }}>
+              <div style={{ width: 20, height: 20, borderRadius: 99, background: T.lblue, color: T.blue,
+                            fontSize: 11, fontWeight: 800, display: "flex", alignItems: "center",
+                            justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
+                {i + 1}
               </div>
-              <input
-                value={f.val}
-                onChange={(e) => f.set(e.target.value)}
-                placeholder={f.ph}
-                style={{
-                  width: "100%", border: `1px solid ${T.border}`, borderRadius: 8,
-                  padding: "10px 14px", color: T.text, fontSize: 14, outline: "none",
-                  background: T.bg, fontFamily: "'DM Sans', sans-serif",
-                }}
-              />
+              <span style={{ fontSize: 13, color: T.sub, lineHeight: 1.6 }}>{p}</span>
             </div>
           ))}
-        </div>
-      </Card>
 
-      {/* Questions */}
-      {konstruk.map((k) => (
-        <Card key={k.id} style={{ marginBottom: 20, borderTop: `3px solid ${k.color}` }}>
-          <div style={{ fontWeight: 700, color: k.color, fontSize: 15, marginBottom: 18 }}>{k.label}</div>
-          {k.items.map((q, i) => {
-            const key = `${k.id}_${i}`;
-            return (
-              <div key={key} style={{ marginBottom: 20 }}>
-                <div style={{ fontSize: 14, color: T.text, lineHeight: 1.55, marginBottom: 10 }}>
-                  <span style={{ fontWeight: 700, color: k.color, marginRight: 6 }}>{k.id}{i + 1}.</span>
-                  {q}
-                </div>
-                <div style={{ display: "flex", gap: 8 }}>
-                  {[1, 2, 3, 4, 5].map((v) => (
-                    <button
-                      key={v}
-                      className="radio-btn"
-                      onClick={() => setAnswers((a) => ({ ...a, [key]: v }))}
-                      title={SCALE_LABELS[v - 1]}
-                      style={{
-                        flex: 1, padding: "10px 4px",
-                        border: `1.5px solid ${answers[key] === v ? k.color : T.border}`,
-                        borderRadius: 8, cursor: "pointer", fontWeight: 800, fontSize: 14,
-                        background: answers[key] === v ? k.color : "#fff",
-                        color: answers[key] === v ? "#fff" : T.muted,
-                        fontFamily: "'DM Sans', sans-serif",
-                      }}
-                    >
-                      {v}
-                    </button>
-                  ))}
-                </div>
-                <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4, fontSize: 11, color: T.muted }}>
-                  <span>Sangat Tidak Setuju</span>
-                  <span>Sangat Setuju</span>
-                </div>
-              </div>
-            );
-          })}
+          <div style={{ marginTop: 16, background: T.lblue, borderRadius: 10, padding: "12px 14px",
+                        display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ fontSize: 18 }}>⏱</span>
+            <div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: T.blue }}>Estimasi Waktu</div>
+              <div style={{ fontSize: 12, color: T.sub }}>5–10 menit pengisian</div>
+            </div>
+          </div>
         </Card>
-      ))}
-
-      <button
-        className="btn-primary"
-        onClick={handleSubmit}
-        style={{
-          width: "100%", padding: 15,
-          background: filled === total ? T.blue : "#e2e8f0",
-          color: filled === total ? "#fff" : T.muted,
-          border: "none", borderRadius: 12, fontWeight: 700, fontSize: 15,
-          cursor: filled === total ? "pointer" : "not-allowed",
-          fontFamily: "'DM Sans', sans-serif", transition: "all .2s",
-        }}
-      >
-        {filled === total ? "Kirim Kuesioner ✓" : `Lengkapi semua pertanyaan (${total - filled} tersisa)`}
-      </button>
+      </div>
     </div>
   );
 }

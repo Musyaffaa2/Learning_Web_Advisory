@@ -30,11 +30,12 @@ export default function Navbar({ page, setPage }) {
           style={{ display: "flex", alignItems: "center", gap: 10, marginRight: 8, cursor: "pointer", flexShrink: 0 }}
           onClick={() => navigate("home")}
         >
-          <div style={{
-            width: 32, height: 32, borderRadius: 10,
-            background: `linear-gradient(135deg, ${T.blue}, #60a5fa)`,
-            display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16,
-          }}><img src="/logo.png" alt="Logo" style={{ width: 32, height: 32, borderRadius: 10 }} /></div>
+          {/* ✏️ Taruh file logo.png di folder public/ */}
+          <img
+            src="/logo.png"
+            alt="Logo"
+            style={{ width: 32, height: 32, borderRadius: 10, objectFit: "contain" }}
+          />
           <span style={{ fontWeight: 700, fontSize: 15, color: T.text }}>
             LAS <span style={{ color: T.blue }}>System</span>
           </span>

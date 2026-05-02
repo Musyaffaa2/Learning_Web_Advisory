@@ -37,7 +37,7 @@ export default function PageHome({ setPage }) {
             fontFamily: "'DM Serif Display', serif", fontSize: 50, lineHeight: 1.1,
             color: T.text, margin: "14px 0 20px", animationDelay: ".12s",
           }}>
-            Analisis Pola Belajar<br />dengan <span style={{ color: T.blue }}>SOM-m-AT</span>
+            Sistem Penasihat Pembelajaran<br />dengan <span style={{ color: T.blue }}>SOM-m-AT</span>
           </h1>
           <p className="fade-up" style={{
             color: T.sub, fontSize: 16, lineHeight: 1.8,
