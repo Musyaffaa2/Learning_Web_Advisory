@@ -104,7 +104,7 @@ export default function PageInformasi() {
       <Card style={{ marginBottom: 28, overflow: "hidden" }}>
         <div style={{ display: "flex", gap: 28, alignItems: "center" }} className="video-section-grid">
           {/* Thumbnail / embed */}
-          <div style={{ flex: "0 0 420px", position: "relative", borderRadius: 12, overflow: "hidden",
+          <div className="video-embed-sm" style={{ flex: "0 0 420px", position: "relative", borderRadius: 12, overflow: "hidden",
                         background: "#0f172a", aspectRatio: "16/9" }}>
             {/* Ganti src dengan URL embed video YouTube kamu */}
             {/* Contoh: https://www.youtube.com/embed/VIDEO_ID */}
