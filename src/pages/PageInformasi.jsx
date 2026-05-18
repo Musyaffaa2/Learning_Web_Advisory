@@ -109,7 +109,7 @@ export default function PageInformasi() {
             {/* Ganti src dengan URL embed video YouTube kamu */}
             {/* Contoh: https://www.youtube.com/embed/VIDEO_ID */}
             <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              src="https://www.youtube.com/embed/mya0ei0nBGM"
               title="Penjelasan SOM-m-AT"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

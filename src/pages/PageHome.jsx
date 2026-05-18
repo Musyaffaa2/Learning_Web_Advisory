@@ -729,7 +729,7 @@ export default function PageHome({ setPage }) {
               >
                 {/* Ganti VIDEO_ID dengan ID YouTube kamu */}
                 <iframe
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                  src="https://www.youtube.com/embed/mya0ei0nBGM"
                   title="Penjelasan Learning Advisory System"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
