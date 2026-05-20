@@ -3,7 +3,7 @@ import SectionLabel from "../components/ui/SectionLabel";
 import Card from "../components/ui/Card";
 
 // ✏️ Ganti URL ini dengan link Google Form kamu
-const GOOGLE_FORM_URL = "https://forms.gle/GANTI_DENGAN_LINK_FORM_KAMU";
+const GOOGLE_FORM_URL = "https://forms.gle/k6WJ4QgdUCuqwSd49";
 
 const STEPS = [
   { num: "1", icon: "👁️", title: "Pelajari Sistem",    desc: "Baca penjelasan metode dan lihat visualisasi hasil klasterisasi di halaman sebelumnya." },
