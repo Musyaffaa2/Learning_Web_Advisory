@@ -6,7 +6,7 @@ const FEATURES = [
   {
     icon: "🧠",
     title: "SOM-m-AT",
-    desc: "Metode Self-Organizing Map modifikasi berbasis Adaptive Training untuk mengklasterisasi pola belajar siswa secara otomatis.",
+    desc: "Metode Self-Organizing Map modifikasi berbasis Adaptive Training untuk mengklasterisasi pola belajar siswa.",
   },
   {
     icon: "📊",
@@ -19,9 +19,9 @@ const FEATURES = [
     desc: "Sistem menyajikan informasi pola belajar siswa sebagai bahan pertimbangan guru dalam pengambilan keputusan.",
   },
   {
-    icon: "📝",
-    title: "Evaluasi TAM2",
-    desc: "Penerimaan teknologi diukur menggunakan model TAM2 melalui kuesioner terstruktur yang diisi oleh guru.",
+    icon: "🖥️",
+    title: "Assignment ",
+    desc: "Data bersumber dari aktivitas problem posing matematika siswa SD melalui 3 assignment .",
   },
 ];
 
@@ -47,6 +47,200 @@ const HOW_IT_WORKS = [
     desc: "Hasil klasterisasi ditampilkan dalam grafik, lalu guru diminta mengisi kuesioner penerimaan teknologi.",
   },
 ];
+
+/* ── Ilustrasi SVG Guru & Murid ────────────────────────────────────────── */
+function IllustrationHero() {
+  return (
+    <svg
+      viewBox="0 0 320 260"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ width: "100%", maxWidth: 320, height: "auto" }}
+    >
+      {/* ── Background shapes ── */}
+      <circle cx="160" cy="130" r="110" fill="#eff6ff" opacity="0.6" />
+      <circle cx="80" cy="200" r="40" fill="#dbeafe" opacity="0.4" />
+      <circle cx="250" cy="60" r="30" fill="#bfdbfe" opacity="0.35" />
+
+      {/* ══ GURU (kiri) ══ */}
+      {/* Tubuh guru */}
+      <rect x="42" y="130" width="54" height="70" rx="10" fill="#2563eb" />
+      {/* Kepala guru */}
+      <circle cx="69" cy="115" r="22" fill="#fcd34d" />
+      {/* Rambut guru */}
+      <ellipse cx="69" cy="97" rx="22" ry="10" fill="#1e3a5f" />
+      {/* Wajah guru — mata */}
+      <circle cx="62" cy="114" r="3" fill="#1e3a5f" />
+      <circle cx="76" cy="114" r="3" fill="#1e3a5f" />
+      {/* Senyum guru */}
+      <path
+        d="M62 121 Q69 127 76 121"
+        stroke="#1e3a5f"
+        strokeWidth="1.5"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Dasi guru */}
+      <polygon points="69,130 65,148 69,155 73,148" fill="#60a5fa" />
+      {/* Tangan kiri guru — memegang papan */}
+      <rect x="18" y="140" width="26" height="4" rx="2" fill="#2563eb" />
+      {/* Tangan kanan guru */}
+      <rect x="94" y="140" width="20" height="4" rx="2" fill="#2563eb" />
+      {/* Kaki guru */}
+      <rect x="50" y="198" width="14" height="22" rx="4" fill="#1e3a5f" />
+      <rect x="72" y="198" width="14" height="22" rx="4" fill="#1e3a5f" />
+      {/* Sepatu guru */}
+      <ellipse cx="57" cy="220" rx="10" ry="4" fill="#0f172a" />
+      <ellipse cx="79" cy="220" rx="10" ry="4" fill="#0f172a" />
+
+      {/* Papan tulis kecil */}
+      <rect x="10" y="108" width="48" height="34" rx="4" fill="#1e3a5f" />
+      <rect x="13" y="111" width="42" height="28" rx="2" fill="#1e40af" />
+      {/* Tulisan di papan */}
+      <text
+        x="34"
+        y="121"
+        textAnchor="middle"
+        fill="#93c5fd"
+        fontSize="5"
+        fontWeight="bold"
+      >
+        SOM
+      </text>
+      <text x="34" y="129" textAnchor="middle" fill="#60a5fa" fontSize="4">
+        m-AT
+      </text>
+      <line
+        x1="17"
+        y1="132"
+        x2="51"
+        y2="132"
+        stroke="#3b82f6"
+        strokeWidth="0.8"
+      />
+      {/* Kaki papan */}
+      <line
+        x1="22"
+        y1="142"
+        x2="22"
+        y2="150"
+        stroke="#1e3a5f"
+        strokeWidth="2"
+      />
+      <line
+        x1="46"
+        y1="142"
+        x2="46"
+        y2="150"
+        stroke="#1e3a5f"
+        strokeWidth="2"
+      />
+
+      {/* ══ MURID 1 (tengah kanan) ══ */}
+      {/* Tubuh murid 1 */}
+      <rect x="135" y="148" width="46" height="58" rx="9" fill="#16a34a" />
+      {/* Kepala murid 1 */}
+      <circle cx="158" cy="133" r="18" fill="#fcd34d" />
+      {/* Rambut murid 1 */}
+      <ellipse cx="158" cy="118" rx="18" ry="8" fill="#92400e" />
+      {/* Mata murid 1 */}
+      <circle cx="153" cy="132" r="2.5" fill="#1e3a5f" />
+      <circle cx="163" cy="132" r="2.5" fill="#1e3a5f" />
+      {/* Senyum murid 1 */}
+      <path
+        d="M152 138 Q158 143 164 138"
+        stroke="#1e3a5f"
+        strokeWidth="1.5"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Buku murid 1 */}
+      <rect x="120" y="158" width="18" height="24" rx="2" fill="#fef3c7" />
+      <rect x="121" y="162" width="16" height="1.5" rx="1" fill="#d97706" />
+      <rect x="121" y="166" width="12" height="1.5" rx="1" fill="#d97706" />
+      <rect x="121" y="170" width="14" height="1.5" rx="1" fill="#d97706" />
+      {/* Kaki murid 1 */}
+      <rect x="143" y="204" width="12" height="18" rx="4" fill="#166534" />
+      <rect x="160" y="204" width="12" height="18" rx="4" fill="#166534" />
+      <ellipse cx="149" cy="222" rx="9" ry="3.5" fill="#0f172a" />
+      <ellipse cx="166" cy="222" rx="9" ry="3.5" fill="#0f172a" />
+
+      {/* ══ MURID 2 (kanan) ══ */}
+      {/* Tubuh murid 2 */}
+      <rect x="210" y="152" width="44" height="54" rx="9" fill="#dc2626" />
+      {/* Kepala murid 2 */}
+      <circle cx="232" cy="137" r="18" fill="#fcd34d" />
+      {/* Rambut murid 2 — poni */}
+      <ellipse cx="232" cy="122" rx="18" ry="8" fill="#1e3a5f" />
+      <ellipse cx="222" cy="128" rx="7" ry="5" fill="#1e3a5f" />
+      {/* Mata murid 2 */}
+      <circle cx="227" cy="136" r="2.5" fill="#1e3a5f" />
+      <circle cx="237" cy="136" r="2.5" fill="#1e3a5f" />
+      {/* Senyum murid 2 */}
+      <path
+        d="M226 143 Q232 148 238 143"
+        stroke="#1e3a5f"
+        strokeWidth="1.5"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Tablet murid 2 */}
+      <rect x="252" y="162" width="22" height="28" rx="3" fill="#e2e8f0" />
+      <rect x="254" y="165" width="18" height="20" rx="2" fill="#93c5fd" />
+      <circle cx="263" cy="188" r="2" fill="#94a3b8" />
+      {/* Kaki murid 2 */}
+      <rect x="217" y="204" width="12" height="18" rx="4" fill="#991b1b" />
+      <rect x="234" y="204" width="12" height="18" rx="4" fill="#991b1b" />
+      <ellipse cx="223" cy="222" rx="9" ry="3.5" fill="#0f172a" />
+      <ellipse cx="240" cy="222" rx="9" ry="3.5" fill="#0f172a" />
+
+      {/* ══ Elemen dekoratif ══ */}
+      {/* Bintang / sparkle */}
+      <text x="108" y="105" fontSize="14" fill="#fbbf24">
+        ★
+      </text>
+      <text x="285" y="140" fontSize="10" fill="#60a5fa">
+        ★
+      </text>
+      <text x="180" y="88" fontSize="8" fill="#34d399">
+        ✦
+      </text>
+      {/* Garis lantai */}
+      <line
+        x1="20"
+        y1="228"
+        x2="300"
+        y2="228"
+        stroke="#e2e8f0"
+        strokeWidth="2"
+        strokeDasharray="4,4"
+      />
+
+      {/* Label cluster kecil di atas kepala murid */}
+      <rect x="138" y="108" width="40" height="14" rx="7" fill="#dcfce7" />
+      <text
+        x="158"
+        y="119"
+        textAnchor="middle"
+        fill="#16a34a"
+        fontSize="6"
+        fontWeight="bold"
+      >
+        Cluster 1
+      </text>
+      <rect x="212" y="112" width="40" height="14" rx="7" fill="#fef3c7" />
+      <text
+        x="232"
+        y="123"
+        textAnchor="middle"
+        fill="#d97706"
+        fontSize="6"
+        fontWeight="bold"
+      >
+        Cluster 2
+      </text>
+    </svg>
+  );
+}
 
 export default function PageHome({ setPage }) {
   return (
@@ -179,6 +373,7 @@ export default function PageHome({ setPage }) {
 
         {/* Right visual */}
         <div className="hero-right">
+          {/* BG blob */}
           <div
             style={{
               position: "absolute",
@@ -268,7 +463,7 @@ export default function PageHome({ setPage }) {
               ))}
           </div>
 
-          {/* Main mock card */}
+          {/* ── Ilustrasi SVG guru + murid (tengah) ── */}
           <div
             className="float-card"
             style={{
@@ -276,70 +471,22 @@ export default function PageHome({ setPage }) {
               zIndex: 4,
               top: "50%",
               left: "50%",
-              transform: "translate(-34%, -50%) rotate(-2deg)",
+              transform: "translate(-38%, -52%)",
               background: "#fff",
-              borderRadius: 20,
-              padding: 24,
-              width: 290,
-              boxShadow: "0 24px 60px rgba(37,99,235,.16)",
+              borderRadius: 24,
+              padding: "20px 16px",
+              width: 300,
+              boxShadow: "0 24px 60px rgba(37,99,235,.14)",
               border: "1px solid #e2e8f0",
             }}
           >
+            <IllustrationHero />
             <div
               style={{
-                fontSize: 10,
-                color: T.muted,
-                fontWeight: 700,
-                marginBottom: 14,
-                letterSpacing: 1,
-              }}
-            >
-              HASIL KLASTERISASI SOM-m-AT
-            </div>
-            {[
-              { label: "Cluster 1 — Tinggi", n: 3, pct: 37, color: T.green },
-              { label: "Cluster 2 — Sedang", n: 2, pct: 25, color: T.amber },
-              { label: "Cluster 3 — Rendah", n: 3, pct: 38, color: T.red },
-            ].map((c) => (
-              <div key={c.label} style={{ marginBottom: 12 }}>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    marginBottom: 4,
-                  }}
-                >
-                  <span
-                    style={{ fontSize: 12, color: T.text, fontWeight: 600 }}
-                  >
-                    {c.label}
-                  </span>
-                  <span
-                    style={{ fontSize: 12, color: c.color, fontWeight: 700 }}
-                  >
-                    {c.n} siswa
-                  </span>
-                </div>
-                <div
-                  style={{ background: "#f1f5f9", borderRadius: 99, height: 6 }}
-                >
-                  <div
-                    style={{
-                      width: `${c.pct}%`,
-                      height: "100%",
-                      background: c.color,
-                      borderRadius: 99,
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-            <div
-              style={{
-                marginTop: 14,
+                marginTop: 10,
                 background: "#eff6ff",
                 borderRadius: 8,
-                padding: "9px 12px",
+                padding: "8px 12px",
                 display: "flex",
                 justifyContent: "space-between",
               }}
@@ -347,13 +494,13 @@ export default function PageHome({ setPage }) {
               <span style={{ fontSize: 11, color: T.sub }}>
                 Data dari Monsakun
               </span>
-              <span style={{ fontSize: 13, fontWeight: 700, color: T.blue }}>
+              <span style={{ fontSize: 12, fontWeight: 700, color: T.blue }}>
                 13 Fitur
               </span>
             </div>
           </div>
 
-          {/* Accent: fitur */}
+          {/* Accent: fitur input */}
           <div
             style={{
               position: "absolute",
@@ -486,7 +633,7 @@ export default function PageHome({ setPage }) {
             </div>
           </div>
 
-          {/* Accent: nodes */}
+          {/* Accent: topologi SOM */}
           <div
             style={{
               position: "absolute",
@@ -717,7 +864,6 @@ export default function PageHome({ setPage }) {
             className="video-section-grid"
             style={{ display: "flex", gap: 40, alignItems: "center" }}
           >
-            {/* Video embed */}
             <div className="video-embed" style={{ flex: "1 1 0", minWidth: 0 }}>
               <div
                 style={{
@@ -729,7 +875,6 @@ export default function PageHome({ setPage }) {
                   border: "1px solid #e2e8f0",
                 }}
               >
-                {/* ✏️ Ganti dengan ID YouTube video kamu */}
                 <iframe
                   src="https://www.youtube.com/embed/UVJFSKYMowg"
                   title="1 Menit Memahami Learning Advisory System"
@@ -747,7 +892,6 @@ export default function PageHome({ setPage }) {
               </div>
             </div>
 
-            {/* Side text */}
             <div style={{ flex: "1 1 0", minWidth: 0 }}>
               <div
                 style={{
@@ -763,14 +907,20 @@ export default function PageHome({ setPage }) {
               {[
                 {
                   icon: "🖥️",
-                  text: "Data problem posing siswa dari platform Monsakun",
+                  text: "Identifikasi data proses berpikir siswa melalui aktivitas penyusunan soal matematika (Problem Posing)",
                 },
-                { icon: "🧠", text: "Proses klasterisasi dengan SOM-m-AT" },
+                {
+                  icon: "🧠",
+                  text: "Proses otomatisasi pemetaan karakteristik siswa menggunakan komputasi SOM m-Ary Tree",
+                },
                 {
                   icon: "📊",
-                  text: "Cara membaca visualisasi hasil cluster siswa",
+                  text: "Cara memetakan dan membaca kecenderungan pola belajar melalui dashboard interaktif website",
                 },
-                { icon: "📝", text: "Proses pengisian kuesioner TAM2" },
+                {
+                  icon: "🎯",
+                  text: "Langkah penerapan strategi bimbingan yang personal dan efektif sesuai kebutuhan kelompok belajar",
+                },
               ].map((item, i) => (
                 <div
                   key={i}
