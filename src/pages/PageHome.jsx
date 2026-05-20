@@ -6,45 +6,45 @@ const FEATURES = [
   {
     icon: "🧠",
     title: "SOM-m-AT",
-    desc: "Metode Self-Organizing Map modifikasi berbasis Adaptive Training untuk klasterisasi pola belajar siswa.",
+    desc: "Metode Self-Organizing Map modifikasi berbasis Adaptive Training untuk mengklasterisasi pola belajar siswa secara otomatis.",
   },
   {
     icon: "📊",
     title: "Visualisasi Cluster",
-    desc: "Hasil analisis ditampilkan dalam bentuk grafik interaktif yang mudah dipahami guru.",
+    desc: "Hasil analisis ditampilkan dalam bentuk grafik yang mudah dipahami, membantu guru melihat pola kemampuan siswa.",
   },
   {
     icon: "💡",
-    title: "Rekomendasi Tepat",
-    desc: "Sistem memberikan saran strategi pembelajaran berdasarkan cluster yang dihasilkan.",
+    title: "Insight Pembelajaran",
+    desc: "Sistem menyajikan informasi pola belajar siswa sebagai bahan pertimbangan guru dalam pengambilan keputusan.",
   },
   {
     icon: "📝",
     title: "Evaluasi TAM2",
-    desc: "Penerimaan teknologi diukur menggunakan model TAM2 melalui kuesioner terstruktur.",
+    desc: "Penerimaan teknologi diukur menggunakan model TAM2 melalui kuesioner terstruktur yang diisi oleh guru.",
   },
 ];
 
 const HOW_IT_WORKS = [
   {
     num: "01",
-    title: "Input Data Siswa",
-    desc: "Data aktivitas belajar dan nilai siswa dimasukkan ke dalam sistem.",
+    title: "Data Monsakun",
+    desc: "Data aktivitas problem posing siswa dari platform Monsakun digunakan sebagai input sistem.",
   },
   {
     num: "02",
-    title: "Proses SOM-m-AT",
-    desc: "Algoritma menganalisis pola dan mengelompokkan siswa ke dalam cluster.",
+    title: "Ekstraksi 13 Fitur",
+    desc: "Setiap hasil pekerjaan siswa diolah menjadi 13 fitur yang merepresentasikan pola penyusunan soal.",
   },
   {
     num: "03",
-    title: "Visualisasi Hasil",
-    desc: "Hasil klasterisasi ditampilkan dalam grafik dan tabel yang informatif.",
+    title: "Proses SOM-m-AT",
+    desc: "Algoritma menganalisis pola dan mengelompokkan siswa ke dalam cluster berdasarkan kemiripan pola belajar.",
   },
   {
     num: "04",
-    title: "Rekomendasi & Evaluasi",
-    desc: "Guru menerima rekomendasi dan diminta mengisi kuesioner penerimaan.",
+    title: "Visualisasi & Evaluasi",
+    desc: "Hasil klasterisasi ditampilkan dalam grafik, lalu guru diminta mengisi kuesioner penerimaan teknologi.",
   },
 ];
 
@@ -132,11 +132,11 @@ export default function PageHome({ setPage }) {
               animationDelay: ".2s",
             }}
           >
-            Sistem berbasis kecerdasan buatan yang mengklasterisasi pola belajar
-            siswa menggunakan metode{" "}
+            Sistem yang mengklasterisasi pola belajar siswa berdasarkan data
+            aktivitas <strong>problem posing</strong> dari platform{" "}
+            <strong>Monsakun</strong>, menggunakan metode{" "}
             <strong>Self-Organizing Map modifikasi Adaptive Training</strong>,
-            dirancang untuk membantu guru merancang strategi pembelajaran yang
-            lebih efektif.
+            untuk membantu guru memahami karakteristik belajar siswa.
           </p>
           <div
             className="fade-up hero-btn-row"
@@ -216,7 +216,7 @@ export default function PageHome({ setPage }) {
             }}
           />
 
-          {/* Dot cluster */}
+          {/* Dot clusters */}
           <div
             style={{
               position: "absolute",
@@ -268,7 +268,7 @@ export default function PageHome({ setPage }) {
               ))}
           </div>
 
-          {/* Main mock card — cluster summary */}
+          {/* Main mock card */}
           <div
             className="float-card"
             style={{
@@ -345,15 +345,15 @@ export default function PageHome({ setPage }) {
               }}
             >
               <span style={{ fontSize: 11, color: T.sub }}>
-                Total Siswa Dianalisis
+                Data dari Monsakun
               </span>
               <span style={{ fontSize: 13, fontWeight: 700, color: T.blue }}>
-                8 Siswa
+                13 Fitur
               </span>
             </div>
           </div>
 
-          {/* Accent: accuracy */}
+          {/* Accent: fitur */}
           <div
             style={{
               position: "absolute",
@@ -375,7 +375,7 @@ export default function PageHome({ setPage }) {
                 letterSpacing: 1,
               }}
             >
-              AKURASI MODEL
+              FITUR INPUT
             </div>
             <div
               style={{
@@ -385,7 +385,7 @@ export default function PageHome({ setPage }) {
                 lineHeight: 1.2,
               }}
             >
-              91.4%
+              13
             </div>
             <div
               style={{
@@ -395,11 +395,11 @@ export default function PageHome({ setPage }) {
                 marginTop: 4,
               }}
             >
-              ✓ Tervalidasi
+              ✓ Problem posing
             </div>
           </div>
 
-          {/* Accent: iterasi */}
+          {/* Accent: platform */}
           <div
             style={{
               position: "absolute",
@@ -434,20 +434,20 @@ export default function PageHome({ setPage }) {
                   fontSize: 13,
                 }}
               >
-                ⚙️
+                🖥️
               </div>
               <span style={{ fontSize: 12, fontWeight: 700, color: T.text }}>
-                Adaptive Training
+                Platform Monsakun
               </span>
             </div>
             <div style={{ fontSize: 11, color: T.sub, lineHeight: 1.5 }}>
-              Learning rate menyesuaikan
+              3 assignment
               <br />
-              secara otomatis tiap iterasi
+              problem posing matematika
             </div>
           </div>
 
-          {/* Accent: epoch */}
+          {/* Accent: assignment */}
           <div
             style={{
               position: "absolute",
@@ -469,7 +469,7 @@ export default function PageHome({ setPage }) {
                 letterSpacing: 1,
               }}
             >
-              ITERASI TRAINING
+              JUMLAH ASSIGNMENT
             </div>
             <div
               style={{
@@ -479,10 +479,10 @@ export default function PageHome({ setPage }) {
                 lineHeight: 1.2,
               }}
             >
-              500
+              3
             </div>
             <div style={{ fontSize: 11, color: T.muted, marginTop: 4 }}>
-              Epoch konvergen
+              Data sekunder siswa SD
             </div>
           </div>
 
@@ -596,7 +596,10 @@ export default function PageHome({ setPage }) {
       </section>
 
       {/* ══ HOW IT WORKS ══ */}
-      <section style={{ padding: "64px 48px", background: T.bg }}>
+      <section
+        className="page-section"
+        style={{ padding: "64px 48px", background: T.bg }}
+      >
         <div style={{ textAlign: "center", marginBottom: 44 }}>
           <SectionLabel>ALUR SISTEM</SectionLabel>
           <h2
@@ -622,7 +625,6 @@ export default function PageHome({ setPage }) {
         >
           {HOW_IT_WORKS.map((s, i) => (
             <div key={s.num} style={{ position: "relative" }}>
-              {/* Connector line */}
               {i < HOW_IT_WORKS.length - 1 && (
                 <div
                   style={{
@@ -695,7 +697,7 @@ export default function PageHome({ setPage }) {
                 marginTop: 8,
               }}
             >
-              Pahami Sistem dalam 5 Menit
+              1 Menit Memahami Sistem LAS
             </h2>
             <p
               style={{
@@ -706,8 +708,8 @@ export default function PageHome({ setPage }) {
                 margin: "10px auto 0",
               }}
             >
-              Tonton video berikut untuk memahami cara kerja LAS dan metode
-              SOM-m-AT secara visual.
+              Tonton video animasi berikut untuk memahami cara kerja LAS dan
+              metode SOM-m-AT secara visual.
             </p>
           </div>
 
@@ -715,7 +717,7 @@ export default function PageHome({ setPage }) {
             className="video-section-grid"
             style={{ display: "flex", gap: 40, alignItems: "center" }}
           >
-            {/* Video embed — FIXED */}
+            {/* Video embed */}
             <div className="video-embed" style={{ flex: "1 1 0", minWidth: 0 }}>
               <div
                 style={{
@@ -727,10 +729,10 @@ export default function PageHome({ setPage }) {
                   border: "1px solid #e2e8f0",
                 }}
               >
-                {/* Ganti VIDEO_ID dengan ID YouTube kamu */}
+                {/* ✏️ Ganti dengan ID YouTube video kamu */}
                 <iframe
-                  src="https://www.youtube.com/embed/mya0ei0nBGM"
-                  title="Penjelasan Learning Advisory System"
+                  src="https://www.youtube.com/embed/UVJFSKYMowg"
+                  title="1 Menit Memahami Learning Advisory System"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   style={{
@@ -756,12 +758,18 @@ export default function PageHome({ setPage }) {
                   marginBottom: 10,
                 }}
               >
-                APA YANG AKAN KAMU PELAJARI
+                APA YANG AKAN DIPELAJARI
               </div>
               {[
-                { icon: "🧠", text: "Konsep dasar Learning Advisory System" },
-                { icon: "📊", text: "Cara kerja algoritma SOM-m-AT" },
-                { icon: "🎯", text: "Cara membaca hasil klasterisasi siswa" },
+                {
+                  icon: "🖥️",
+                  text: "Data problem posing siswa dari platform Monsakun",
+                },
+                { icon: "🧠", text: "Proses klasterisasi dengan SOM-m-AT" },
+                {
+                  icon: "📊",
+                  text: "Cara membaca visualisasi hasil cluster siswa",
+                },
                 { icon: "📝", text: "Proses pengisian kuesioner TAM2" },
               ].map((item, i) => (
                 <div
@@ -783,7 +791,7 @@ export default function PageHome({ setPage }) {
               <div style={{ marginTop: 16, display: "flex", gap: 16 }}>
                 <div style={{ textAlign: "center" }}>
                   <div style={{ fontSize: 22, fontWeight: 800, color: T.blue }}>
-                    5:30
+                    1:28
                   </div>
                   <div style={{ fontSize: 11, color: T.muted }}>Durasi</div>
                 </div>
@@ -841,6 +849,7 @@ export default function PageHome({ setPage }) {
             kuesioner untuk membantu penelitian ini.
           </p>
           <div
+            className="cta-btn-row"
             style={{
               display: "flex",
               gap: 14,
