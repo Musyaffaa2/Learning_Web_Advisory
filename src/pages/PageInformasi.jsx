@@ -176,7 +176,7 @@ export default function PageInformasi() {
               VIDEO PENJELASAN
             </div>
             <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 22, color: T.text, marginBottom: 10, lineHeight: 1.3 }}>
-              1 Menit Memahami Sistem Penasehat Pembelajaran
+              1 Menit Memahami Learning Advisory System
             </h3>
             <p style={{ color: T.sub, fontSize: 14, lineHeight: 1.75, marginBottom: 16 }}>
               Video ini menjelaskan bagaimana sistem menganalisis cara siswa mengerjakan soal
