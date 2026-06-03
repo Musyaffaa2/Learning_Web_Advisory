@@ -25,22 +25,7 @@ export default function Navbar({ page, setPage }) {
         padding: "0 48px", display: "flex", alignItems: "center",
         height: 64, gap: 40,
       }}>
-        {/* Logo */}
-        <div
-          style={{ display: "flex", alignItems: "center", gap: 10, marginRight: 8, cursor: "pointer", flexShrink: 0 }}
-          onClick={() => navigate("home")}
-        >
-          {/* ✏️ Taruh file logo.png di folder public/ */}
-          <img
-            src="/logo.png"
-            alt="Logo"
-            style={{ width: 32, height: 32, borderRadius: 10, objectFit: "contain" }}
-          />
-          <span style={{ fontWeight: 700, fontSize: 15, color: T.text }}>
-            LAS <span style={{ color: T.blue }}>System</span>
-          </span>
-        </div>
-
+        
         {/* Desktop links */}
         <div className="nav-links-desktop" style={{ gap: 32, flex: 1 }}>
           {NAV_LINKS.map((l) => (

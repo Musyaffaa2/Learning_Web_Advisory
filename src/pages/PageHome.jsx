@@ -290,7 +290,7 @@ export default function PageHome({ setPage }) {
           }}>
             <div style={{ fontSize: 10, color: T.muted, fontWeight: 700, letterSpacing: 1 }}>JUMLAH SISWA</div>
             <div style={{ fontSize: 26, fontWeight: 800, color: T.amber, lineHeight: 1.2 }}>39</div>
-            <div style={{ fontSize: 11, color: T.muted, marginTop: 4 }}>Siswa SD kelas 1, Jepang</div>
+            <div style={{ fontSize: 11, color: T.muted, marginTop: 4 }}>Siswa SD</div>
           </div>
 
           {/* Accent: jumlah kelompok */}
